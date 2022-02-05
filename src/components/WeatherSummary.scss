@@ -1,0 +1,22 @@
+ol {
+  overflow: auto;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: row;
+  cursor: default;
+
+  li {
+    border-right: 1px solid #ddd;
+    padding: 10px;
+    list-style-type: none;
+    display: flex;
+    &:last-child {
+      border: none;
+    }
+
+    &:hover {
+      background: #f1f1f1;
+    }
+  }
+}
