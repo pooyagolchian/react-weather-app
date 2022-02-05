@@ -40,7 +40,7 @@ const App: FC = () => {
         locations={locations}
         onSelect={(location) => setCurrentLocation(location)}
       />
-      <WeatherSummery location={currentLocation}/>
+      <WeatherSummery location={currentLocation} />
     </div>
   );
 };
