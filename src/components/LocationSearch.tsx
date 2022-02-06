@@ -1,18 +1,26 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 
 interface LocationSearchProps {
   onSearch: (search: string) => void;
 }
 
-export const LocationSearch: FC<LocationSearchProps> = ({ onSearch }) => {
+// review: you can keep it more simple since it is obviously function component(FC)
+export const LocationSearch = ({ onSearch } : LocationSearchProps) => {
   const [locationSearch, setLocationSearch] = useState("");
+
+  // review: define type  const disableSearch: boolean = ...
   const disableSearch = locationSearch.trim() === "";
+
+  // review: Define function return type
   const addLocation = () => {
     onSearch(locationSearch);
     setLocationSearch("");
   };
-  const handelLocationSearch = (e: any): any => {
+
+  // review: Dont use type any, You can also handle it on tsconfig file like as "noImplicitAny": false"
+  const handleLocationSearch = (e: any): any => {
     setLocationSearch(e.target.value);
+
     if (e.key === "Enter") {
       addLocation();
     }
@@ -26,8 +34,8 @@ export const LocationSearch: FC<LocationSearchProps> = ({ onSearch }) => {
           className="ml-1 mr-1 form-control"
           type="text"
           value={locationSearch}
-          onChange={handelLocationSearch}
-          onKeyPress={handelLocationSearch}
+          onChange={handleLocationSearch}
+          onKeyPress={handleLocationSearch}
         />
       </label>
       <button

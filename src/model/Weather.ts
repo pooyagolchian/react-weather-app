@@ -4,7 +4,7 @@ export interface Coordinates {
 }
 
 export interface WeatherLocation {
-  coord: Coordinates;
+  coordination: Coordinates;
   id: number;
   name: string;
 }
@@ -28,5 +28,7 @@ export interface MainWeatherData {
 export interface Weather {
   weather: WeatherConditions[];
   main: MainWeatherData;
+  // review: Explicit is better than implicit, check otu link below
+  // https://github.com/ryanmcdermott/clean-code-javascript#avoid-mental-mapping
   dt: number;
 }
