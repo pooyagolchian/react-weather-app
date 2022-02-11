@@ -1,30 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { Weather, WeatherLocation } from "../model/Weather";
-import { readForecast, readWeather } from "../services/WeatherService";
-import { WeatherEntry } from "./WeatherEntry";
-import "./WeatherSummary.scss";
+import React, { useEffect, useState } from 'react';
+import { Weather, WeatherLocation } from '../model/Weather';
+import WeatherService from '../services/WeatherService';
+import { WeatherEntry } from './WeatherEntry';
+import './WeatherSummary.scss';
 
 interface WeatherSummaryProps {
   location: WeatherLocation | null;
 }
 
-export const WeatherSummery = ({location}: WeatherSummaryProps) => {
+export const WeatherSummery = ({ location }: WeatherSummaryProps) => {
   const [weather, setWeather] = useState<Weather | null>(null);
   const [forecast, setForecast] = useState<Weather[] | null>(null);
 
   useEffect(() => {
     (async function () {
-      if (!location) {
-        return
+      if (location) {
+        const [weather, forecast] = await Promise.all([
+          WeatherService.readWeather(location.id),
+          WeatherService.readForecast(location.id),
+        ]);
+        setWeather(weather);
+        setForecast(forecast);
       }
-
-      const [weather, forecast] = await Promise.all([
-        readWeather(location.id),
-        readForecast(location.id),
-      ]);
-
-      setWeather(weather);
-      setForecast(forecast);
     })();
   }, [location]);
 

@@ -1,15 +1,15 @@
-import React from "react";
-import { Weather, WeatherConditions } from "../model/Weather";
-import { getIconUrl } from "../services/WeatherService";
+import React from 'react';
+import { Weather, WeatherConditions } from '../model/Weather';
+import { getIconUrl } from '../services/WeatherService';
 
 interface WeatherEntryProps {
   weather: Weather;
 }
 // review: Good job in terms of defining type however for more consistency
 // you can use function expression everywhere like you used for defining component
-function convertUnixTimeToDate(unixUtc: number): Date {
+const convertUnixTimeToDate = (unixUtc: number): Date => {
   return new Date(unixUtc * 1000);
-}
+};
 
 export const WeatherEntry = ({ weather }: WeatherEntryProps) => (
   // review: you can also destruct "weather" to make it shorter on usage
@@ -31,7 +31,7 @@ export const WeatherEntry = ({ weather }: WeatherEntryProps) => (
 
     {weather.weather.map((condition: WeatherConditions) => (
       <div key={condition.id}>
-        <img src={getIconUrl(condition.icon)} alt={condition.main} />{" "}
+        <img src={getIconUrl(condition.icon)} alt={condition.main} />{' '}
         {condition.main} {condition.description}
       </div>
     ))}
