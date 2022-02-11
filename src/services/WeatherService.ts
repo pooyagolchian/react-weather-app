@@ -21,6 +21,7 @@ const searchLocation = async (term: string) => {
     `/weather?q=${term}&${keyQuery}`
   );
 
+   // TODO: I am ready against nested if since it is ready to follow and kind of messy, but at the end it is up to you.
   if (result.status !== 404) {
     if (result.status !== 200) {
       throw ERROR_200;

@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState } from 'react';
 
 interface LocationSearchProps {
   onSearch: (search: string) => void;
@@ -27,8 +27,9 @@ export const LocationSearch = ({ onSearch }: LocationSearchProps) => {
     }
   };
 
-  return (
-    <Fragment>
+  // TODO: you can also use <></> instead of fragment
+   return (
+    <>
       <label>
         Add Location
         <input
@@ -46,6 +47,6 @@ export const LocationSearch = ({ onSearch }: LocationSearchProps) => {
       >
         Search
       </button>
-    </Fragment>
+    </>
   );
 };
