@@ -51,7 +51,7 @@ const App: FC = () => {
       <LocationTable
         current={currentLocation}
         locations={locations}
-        onSelect={(location) => setCurrentLocation(location)}
+        onSelect={(location: WeatherLocation) => setCurrentLocation(location)}
       />
 
       <WeatherSummery location={currentLocation} />
