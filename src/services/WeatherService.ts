@@ -21,7 +21,7 @@ const searchLocation = async (term: string) => {
     `/weather?q=${term}&${keyQuery}`
   );
 
-   // TODO: I am ready against nested if since it is ready to follow and kind of messy, but at the end it is up to you.
+  // TODO: I am ready against nested if since it is ready to follow and kind of messy, but at the end it is up to you.
   if (result.status !== 404) {
     if (result.status !== 200) {
       throw ERROR_200;
@@ -49,14 +49,14 @@ export const getIconUrl = (code: string): string => {
 };
 
 const readForecast = async (locationId: number) => {
-  const forecast = await http.get<Weather[] | any>(
+  const forecast = await http.get<Weather[] | null>(
     `${ENV_CONFIG.WEATHER_API_URL}/forecast?id=${locationId}&${keyQuery}&units=metric&cnt=8`
   );
 
   if (forecast.status !== 200) {
     throw ERROR_200;
   }
-  return forecast.data.list;
+  return forecast.data['list'];
 };
 
 const WeatherService = {

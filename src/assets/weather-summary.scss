@@ -10,7 +10,6 @@ ol {
     border-right: 1px solid #ddd;
     padding: 10px;
     list-style-type: none;
-    display: flex;
     &:last-child {
       border: none;
     }
@@ -19,4 +18,11 @@ ol {
       background: #f1f1f1;
     }
   }
+}
+
+
+
+.active-city{
+  border: 2px solid $blue-400;
+  border-radius: 5px;
 }

@@ -6,34 +6,34 @@ interface WeatherEntryProps {
   weather: Weather;
 }
 
-// review: Good job in terms of defining type however for more consistency
-// you can use function expression everywhere like you used for defining component
 const convertUnixTimeToDate = (unixUtc: number): Date => {
   return new Date(unixUtc * 1000);
 };
 
-export const WeatherEntry = ({weather}: WeatherEntryProps) => {
-  // review: you can also destruct "weather" to make it shorter on usage
-  // also "weather.weather" on line 32 does not make sense, could be like below:
-  const { weather: weatherConditions , main: { temp, humidity, temp_max, temp_min}, dt: date} = weather;
+export const WeatherEntry = ({ weather }: WeatherEntryProps) => {
+  const {
+    weather: weatherConditions,
+    main: { temp, humidity, temp_max, temp_min },
+    dt: dateTime,
+  } = weather;
 
-  return <div>
-    <div>{convertUnixTimeToDate(date).toLocaleTimeString()}</div>
-
-    <div>
-      <strong>{temp}°C</strong>
-
+  return (
+    <>
       <div>
-        ({temp_min}°C / {temp_max}°C)
+        <div>{convertUnixTimeToDate(dateTime).toLocaleTimeString()}</div>
+        <strong>{temp}°C</strong>
+        <div>
+          ({temp_min}°C / {temp_max}°C)
+        </div>
+        <div>Humidity: {humidity}%</div>
+        {weatherConditions.map((condition: WeatherConditions) => (
+          <div className="col col-auto" key={condition.id}>
+            <img src={getIconUrl(condition.icon)} alt={condition.main} />
+            <div>{condition.main}</div>
+            <div>{condition.description}</div>
+          </div>
+        ))}
       </div>
-    </div>
-
-    <div>Humidity: {humidity}%</div>
-
-    {weatherConditions.map((condition: WeatherConditions) => (
-      <div key={condition.id}>
-        <img src={getIconUrl(condition.icon)} alt={condition.main} />{' '} {condition.main} {condition.description}
-      </div>
-    ))}
-  </div>
-}
+    </>
+  );
+};

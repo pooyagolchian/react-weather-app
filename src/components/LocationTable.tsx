@@ -13,26 +13,25 @@ export const LocationTable = ({
   onSelect,
 }: LocationTableProps) => {
   return (
-    <div>
-      <h2>Locations</h2>
-      <table className="table table-hover">
-        <thead>
-          <tr>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {locations.map((location: WeatherLocation) => (
-            <tr
-              key={location.id}
-              className={current?.id === location.id ? 'table-primary' : ''}
-              onClick={() => onSelect(location)}
-            >
-              <td>{location.name}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div className="col col-12">
+        <div className="weather-table pt-2 row">
+          <h2>Locations</h2>
+          <div className="row">
+            <ul className="col-auto">
+              {locations.map((location: WeatherLocation) => (
+                <li
+                  key={location.id}
+                  className={current?.id === location.id ? 'active-city' : ''}
+                  onClick={() => onSelect(location)}
+                >
+                  <button className="btn btn-outline">{location.name}</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
