@@ -36,6 +36,7 @@ export const LocationSearch = ({ onSearch }: LocationSearchProps) => {
             className="btn btn-primary col col-auto mx-2"
             onClick={addLocation}
             disabled={disableSearch}
+            data-testid="search-btn"
           >
             Search
           </button>
