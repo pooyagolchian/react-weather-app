@@ -18,16 +18,21 @@ const App = () => {
   const addLocation = async (term: string) => {
     try {
       resetAlert();
-      const location = (await WeatherService.searchLocation(term)).data;
+      // TODO: searchLocation can return undefined
+      const location = (await WeatherService.searchLocation(term))?.data;
+
       if (!location) {
         setError(`No location found called ${term}`);
       }
+
       if (locations.find((item) => item.id === location.id)) {
         setWarning(`Location '${term}' is already in the list.`);
       }
+
       setLocations([location, ...locations]);
     } catch (error) {
       console.error(error);
+
       setError(`No location found called ${term}`);
     }
   };
@@ -45,18 +50,16 @@ const App = () => {
     <>
       <div className="container pt-5">
         <h1>Weather</h1>
-        <LocationSearch onSearch={addLocation} />
-        {error ? <div className={`alert alert-danger`}>{error}</div> : null}
-        {warning ? (
-          <div className={`alert alert-warning`}>{warning}</div>
-        ) : null}
+        <LocationSearch onSearch={addLocation} /> {error ?
+        <div className={`alert alert-danger`}>{error}</div> : null} {warning ? (
+        <div className={`alert alert-warning`}>{warning}</div>
+      ) : null}
 
         <LocationTable
           current={currentLocation}
           locations={locations}
           onSelect={(location: WeatherLocation) => setCurrentLocation(location)}
-        />
-        <WeatherSummery location={currentLocation} />
+        /> <WeatherSummery location={currentLocation} />
       </div>
     </>
   );

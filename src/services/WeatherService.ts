@@ -53,9 +53,16 @@ const readForecast = async (locationId: number) => {
     `${ENV_CONFIG.WEATHER_API_URL}/forecast?id=${locationId}&${keyQuery}&units=metric&cnt=8`
   );
 
+  /*
+   TODO: Regarding the line 52, forecast could be null
+    then you will get error exception on forecast.status.
+    Use ?. to get rid of that
+   */
   if (forecast.status !== 200) {
     throw ERROR_200;
   }
+
+  // TODO same here as well, what if forecast is null?
   return forecast.data['list'];
 };
 
