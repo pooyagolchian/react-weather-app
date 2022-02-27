@@ -12,11 +12,11 @@ export const WeatherSummery = ({ location }: WeatherSummaryProps) => {
   const [forecast, setForecast] = useState<Weather[] | null>(null);
 
   useEffect(() => {
-    (async function () {
+    (async () => {
       if (location) {
         const [weather, forecast] = await Promise.all([
-          WeatherService.readWeather(location.id),
-          WeatherService.readForecast(location.id),
+          WeatherService.readWeather(location?.id),
+          WeatherService.readForecast(location?.id),
         ]);
         setWeather(weather);
         setForecast(forecast);

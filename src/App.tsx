@@ -50,16 +50,17 @@ const App = () => {
     <>
       <div className="container pt-5">
         <h1>Weather</h1>
-        <LocationSearch onSearch={addLocation} /> {error ?
-        <div className={`alert alert-danger`}>{error}</div> : null} {warning ? (
-        <div className={`alert alert-warning`}>{warning}</div>
-      ) : null}
-
+        <LocationSearch onSearch={addLocation} />{' '}
+        {error ? <div className={`alert alert-danger`}>{error}</div> : null}{' '}
+        {warning ? (
+          <div className={`alert alert-warning`}>{warning}</div>
+        ) : null}
         <LocationTable
           current={currentLocation}
           locations={locations}
           onSelect={(location: WeatherLocation) => setCurrentLocation(location)}
-        /> <WeatherSummery location={currentLocation} />
+        />{' '}
+        <WeatherSummery location={currentLocation} />
       </div>
     </>
   );
