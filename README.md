@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+## Weather application
+This weather application developed with React.js and React Hook that  provide clean architecture for any project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- React.js Hook
+- Typescript
+- SCSS
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+
+Install all the dependencies that are needed for developing.
 
 ### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The page will reload if you make edits.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `yarn run cypress open`
+ This  project uses Cypress for E2E test.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 🪄 You can see [demo](https://pooyagolchian.com/react-weather-app/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Code scaffolding
 
-### `yarn eject`
+- I use several mythology of clean code in this frontend project.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### BEM
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+BEM is used for methodology with SCSS format to create reusable components for this task. I follow the structure developed in the dummy files.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Husky
 
-## Learn More
+Husky is used for git hook pre-commit to format all code with Prettier.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prettier
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Using [Prettier](https://prettier.io/) for opinionated code formatter.
+It will take care of formatting for you.
+Prettier creates an abstract syntax tree from your code and uses it to write new code formatted according to a set of rules.
+In addition, I check pretty before every commit by add a pre-commit hook. For more detail check package.json, husky section.
+
+### SOLID
+
+Regarding the `S` for `SOLID` I just tried to keep each function(component as a function as well) to
+just responsible for a single task. That's why I just created a separate component for every part
+and also keep it simple stupid.
+
+## Test with Jest and Enzyme 🪄
+
+You can run `yarn test`. One integration test that test all functionality in this application
