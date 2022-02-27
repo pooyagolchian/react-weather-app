@@ -24,11 +24,6 @@ export const WeatherSummery = ({ location }: WeatherSummaryProps) => {
     })();
   }, [location]);
 
-  /*
-    TODO: Since weather and forecast might not change for a while
-     you can also memoize them by useMemo for better performance
-  */
-
   if (!location || !weather || !forecast) return null;
 
   return (

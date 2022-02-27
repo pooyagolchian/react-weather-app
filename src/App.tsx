@@ -18,7 +18,6 @@ const App = () => {
   const addLocation = async (term: string) => {
     try {
       resetAlert();
-      // TODO: searchLocation can return undefined
       const location = (await WeatherService.searchLocation(term))?.data;
 
       if (!location) {
